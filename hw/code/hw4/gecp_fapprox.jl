@@ -23,7 +23,7 @@ function gecp_fapprox(f, m=20; rtol=1e-8, atol=1e-8)
     #      at a time.  I only searched for X and Y over a grid of points;
     #      something more robust might start with a grid search and then
     #      refine with Newton iteration (for example).
- 
+
     fpiv = zeros(Float64, m)
     X = zeros(Float64, m)
     Y = zeros(Float64, m)
@@ -36,13 +36,32 @@ function gecp_fapprox(f, m=20; rtol=1e-8, atol=1e-8)
     S = [f(x,y) for x=xmesh, y=xmesh]
     G = zeros(Float64, nmesh, m)
     H = zeros(Float64, m, nmesh)
-    
+
     # GECP main loop
     for k = 1:m
 
         # TODO: Update X, Y, LU_fXY, G, H, and S; quit early if
         #       tolerances are satisfied.
- 
+        f_m = G*H
+        e = S - f_m
+        if norm(e,2) < atol
+            break
+        end
+        # search for x*,y*
+        (maxval_x,indices_xy) = findmax(abs.(e),dims=1) # '@.' at beg. of line also works
+        (fpiv[k],index_y) = findmax(maxval_x,dims=2)
+
+        xy_max = indices_xy[index_y]
+        X[k] = xmesh[xy_max[1]]
+        Y[k] = ymesh[xy_max[2]]
+        # update G
+        G[:,k] = e[:,Y[k]]/e[X[k],Y[k]]
+        # update H
+        H[k,:] = e[X[k],:]
+
+        if norm(G*H-f_m < rtol
+            break
+        end
     end
     return X, Y, fpiv
 
