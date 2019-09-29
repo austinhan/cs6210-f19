@@ -49,7 +49,7 @@ function gecp_fapprox(f, m=20; rtol=1e-8, atol=1e-8)
         end
         # search for x*,y*
         (maxval_x,indices_xy) = findmax(abs.(e),dims=1) # '@.' at beg. of line also works
-        (thing,index_y) = findmax(maxval_x[1,:],dims=2)
+        (thing,index_y) = findmax(maxval_x[1,:])
         fpiv[k] = thing[1]
         xy_max = indices_xy[index_y]
         X[k] = xmesh[xy_max[1]]
