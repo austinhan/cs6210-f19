@@ -9,6 +9,9 @@
 #
 function tree_solve(p, d, w, b)
   A = zeros(Float64, length(p), length(p))
+  L = zeros(Float64, length(p), length(p))
+  x = zeros(Float64, length(p))
+  y = zeros(Float64, length(p))
   for i = 1:length(p)
     A[i, i] = d[i]
     if p[i] > 0
@@ -16,5 +19,21 @@ function tree_solve(p, d, w, b)
       A[p[i], i] = w[i]
     end
   end
+  for i = 1:length(p)
+    L[i, i] = sqrt(d[i])
+    if p[i] > 0
+      L[p[i], i] = w[i]/d[i]
+      L[p[i], p[i]] -= L[p[i], i]*w[i]
+    end
+  end
+  for i = 1:length(p)
+    y[i] = b[i]/L[i, i]
+    b[p[i]] -= y[i]*w[i]
+  end
+  for i = length(p):-1:1
+    x[i] = y[i]/L[i,i]
+    
+  end
+
   return A\b
 eend
