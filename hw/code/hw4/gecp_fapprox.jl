@@ -1,5 +1,5 @@
 using LinearAlgebra
-
+using Plots
 
 # Approximate a function f on [-1,1]^2 via (at most) m steps of
 # Gaussian elimination with complete pivoting.
@@ -45,6 +45,7 @@ function gecp_fapprox(f, m=20; rtol=1e-8, atol=1e-8)
         f_m = G*H
         e = S - f_m
         if norm(e,2) < atol
+        # if maximum(abs.(e)[:]) < atol
             break
         end
         # search for x*,y*
@@ -59,6 +60,7 @@ function gecp_fapprox(f, m=20; rtol=1e-8, atol=1e-8)
         # update H
         H[k,:] = e[xy_max[1],:]
 
+        # if maximum(abs.(G*H-f_m)[:]) < rtol
         if norm(G*H-f_m) < rtol
             break
         end
@@ -83,8 +85,12 @@ print("\n=== Squared exp ===\n")
 bump(x, y) = exp(-(x^2+y^2)/2)
 X, Y, fpiv = gecp_fapprox(bump, 20)
 print_diagnostics(X, Y, fpiv)
+plot(0:19,fpiv,xaxis=("Iteration",(0,3)),yaxis=("Max error"),label="Squared exp")
+savefig("hw4_sq.png")
 
 print("\n=== Ackley ===\n")
 ackley(x, y) = 20-20*exp(-0.2*sqrt((x^2+y^2)/2))-exp((cos(2*pi*x)+cos(2*pi*y))/2)
 X, Y, fpiv = gecp_fapprox(ackley, 20)
 print_diagnostics(X, Y, fpiv)
+plot(0:19,fpiv,xlabel="Iteration",yaxis=("Max error",:log10,(1e-9,Inf)),label="Ackley")
+savefig("hw4_ac.png")
