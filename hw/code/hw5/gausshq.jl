@@ -3,9 +3,10 @@
 # Compute E[f(Z)] for standard normal Z using order 20 Gauss-Hermite
 # quadrature.
 #
+using LinearAlgebra
 function gausshq(f)
 
-  gh_nodes_weights = [ 
+  gh_nodes_weights = [
       -5.387480890011232862017  2.22939364553415129252E-13 ;
       -4.603682449550744273078  4.3993409922731805536E-10 ;
       -3.944764040115625210376  1.086069370769281694E-7 ;
@@ -31,3 +32,10 @@ function gausshq(f)
   return w' * f.(x)
 
 end
+
+z = randn(100,1)
+X = [z.^0,z.^1,z.^2,z.^3,z.^4,z.^5,z.^6,z.^7,z.^8];
+y = cos.(z)
+
+f(x) = (a.*[1,x,x^2,x^3,x^4,x^5,x^6,x^7,x^8]+cos(x))^2
+efz = gausshq(f)
