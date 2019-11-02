@@ -10,7 +10,7 @@ Q = eye(n);
 V = zeros(2,n-1);
 x = zeros(n,1);
 
-% Compute the QR factorization
+% Compute the QR factorization with Householder
 for j = 1:n-1
     
     % -- Find W_j = I-2vv' to put zero into H(j+1,j)

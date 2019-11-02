@@ -7,6 +7,7 @@ function hw7newton(A, b, c, sigma)
   In = Matrix{Float64}(I, n, n)
   en = zeros(n+1)
   en[end] = 1
+  dM = [-In zeros(10);zeros(10)' 0]
 
   gs = zeros(4,1);
   for k = 1:4
@@ -17,6 +18,10 @@ function hw7newton(A, b, c, sigma)
 
     # Save g(sigma) into gs[k] and update sigma to new
     # eigenvalue estimate.
+    x = F\en
+    gs[k] = x[end]
+    dx = -(F\(dM*x))
+    sigma = sigma - gs[k]/dx[end]
 
   end
 
