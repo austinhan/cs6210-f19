@@ -1,0 +1,65 @@
+\documentclass[12pt, leqno]{article} %% use to set typesize
+\include{common}
+
+\begin{document}
+
+\hdr{2019-10-28}{2019-11-04}
+
+You may (and should) talk about problems with each other and with me,
+providing attribution for any good ideas you might get.  Your final
+write-up should be your own.
+
+% PageRank?
+% Cayley transform, filters, etc
+% Gershgorin and max elements?
+% Solving something with just Hessenberg form
+% Product eigenvalue problem or similar?
+% Multiple eigenvalues?
+
+\paragraph*{1: On the border}
+Suppose the bordered matrix
+\[
+  M(s) =
+  \begin{bmatrix}
+    A-s I & b \\
+    c^T & 0
+  \end{bmatrix}
+\]
+is nonsingular, and consider the linear system
+\[
+  \begin{bmatrix} A-s I & b \\ c^T & 0 \end{bmatrix}
+  \begin{bmatrix} f(s) \\ g(s) \end{bmatrix} =
+  \begin{bmatrix} 0 \\ 1 \end{bmatrix}.
+\]
+\begin{itemize}
+\item
+  Show that $g(\lambda) = 0$ iff $\lambda$ is an eigenvalue of $A$.
+\item
+  Modify the {\tt hw7newton} code (Julia or MATLAB) to implement the
+  Newton iteration
+  \[
+  \sigma_{k+1} = \sigma_k - g(\sigma_k)/g'(\sigma_k).
+  \]
+  You should see quadratic convergence in the tester, as indicated by
+  the $g(\sigma_{k+1})$ having roughly the order of magnitude
+  of $g(\sigma_k)^2$.
+\end{itemize}
+
+\paragraph*{2: Real rotations}
+Suppose $A \in \bbR^{n \times n}$ has a unique (algebraic multiplicity 1)
+complex conjugate pair of eigenvalues $\mu \exp(\pm \iu \theta) = \alpha + \beta \iu$ with maximal
+modulus ($\mu > |\lambda|$ for all other eigenvalues $\lambda$) and
+corresponding eigenvectors $u \pm v \iu$.  Show that power iteration
+from a random starting vector in $\bbR^n$ gives the sequence
+\[
+  v_k \approx u \cos(k\theta + \gamma) - v \sin(k\theta+\gamma)
+\]
+for large $k$.
+
+\paragraph*{3: Shifted solver}
+Suppose $H \in \bbR^{n \times n}$ is given upper Hessenberg matrix.
+Write a QR-based solver that runs in $O(n^2)$ time to solve linear
+systems of the form $(H-\sigma I) x = b$.
+Your code should satisfy the interface in the class repository.
+
+\end{document}

@@ -131,9 +131,11 @@
 -
   date: 2019-10-16
   info: Regularization choices; matrix nearness problems
+  notes: 2019-10-16.pdf
 -
   date: 2019-10-18
   info: Kernels and least squares
+  notes: 2019-10-18.pdf
 #
 # ==================
 # Week 9
@@ -141,14 +143,18 @@
 -
   date: 2019-10-21
   info: Introduction to eigenvalue problems
+  notes: 2019-10-21.pdf
   hw:
     - info: HW 6 (due 10/28)
+      file: hw6.pdf
 -
   date: 2019-10-23
   info: Perturbation theory
+  notes: 2019-10-23.pdf
 -
   date: 2019-10-25
   info: Power iterations
+  notes: 2019-10-25.pdf
   travel: Visit to Kalamazoo
 #
 # ==================
@@ -157,14 +163,18 @@
 -
   date: 2019-10-28
   info: Subspace iterations and QR
+  notes: 2019-10-28.pdf
   hw:
     - info: HW 7 (due 11/04)
+      file: hw7.pdf
 -
   date: 2019-10-30
   info: Hessenberg QR
+  notes: 2019-10-30.pdf
 -
   date: 2019-11-01
-  info: Practical QR
+  info: Theory for symmetric eigenproblems and SVD
+  notes: 2019-11-01.pdf
 #
 # ==================
 # Week 11
@@ -172,14 +182,18 @@
 -
   date: 2019-11-04
   info: Theory for symmetric eigenproblems and SVD
+  notes: 2019-11-04.pdf
   hw:
     - info: HW 8 (due 11/18)
+      file: hw8.pdf
 -
   date: 2019-11-06
   info: Solver ideas for SEP and SVD
+  notes: 2019-11-06.pdf
 -
   date: 2019-11-08
   info: Other eigenvalue problems
+  notes: 2019-11-08.pdf
 #
 # ==================
 # Week 12
@@ -190,9 +204,11 @@
 -
   date: 2019-11-13
   info: Model problems for iterative methods
+  notes: 2019-11-13.pdf
 -
   date: 2019-11-15
   info: Splittings, sweeps, and stationary iterations
+  notes: 2019-11-15.pdf
 #
 # ==================
 # Week 13
