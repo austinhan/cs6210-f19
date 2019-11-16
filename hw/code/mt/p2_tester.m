@@ -15,7 +15,7 @@ dnormx_fd = (normx_p - normx_m)/(2*h);
 
 dnormx = p2_deriv_mnorm(x, M, dx, dM);
 relerr = abs(dnormx_fd-dnormx)/abs(dnormx);
-printf('2a: Relerr (vs finite diff): %e\n', relerr);
+fprintf('2a: Relerr (vs finite diff): %e\n', relerr);
 
 
 % -- Finite difference check for solve
@@ -39,7 +39,7 @@ dx_fd = (xp - xm)/(2*h);
 
 dx = p2_deriv_solve(Q, R, x, b, dZ, db);
 relerr = norm(dx_fd-dx)/norm(dx);
-printf('2b: Relerr (vs finite diff): %e\n', relerr);
+fprintf('2b: Relerr (vs finite diff): %e\n', relerr);
 
 
 % -- Finite difference check for Cholesky
@@ -57,4 +57,4 @@ dR_fd = (Rp-Rm)/(2*h);
 
 dR = p2_deriv_chol(M, R, dM);
 relerr = norm(dR_fd-dR)/norm(dR);
-printf('2c: Relerr (vs finite diff): %e\n', relerr);
+fprintf('2c: Relerr (vs finite diff): %e\n', relerr);

@@ -6,4 +6,7 @@ function kappa = p1_fast_cond(U, S, V)
   n = size(U, 1);
   Z = U*S*V';
   A = eye(n) + Z*Z';
-  kappa = cond(A);
+%   kappa = cond(A);
+  diagS = diag(S);
+  kappa = (1+diagS(1)^2);
+

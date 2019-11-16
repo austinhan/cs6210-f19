@@ -7,4 +7,4 @@ normTinv_ref = norm(inv(T), 1);
 normTinv = p3_norminv(alpha, beta);
 relerr = abs(normTinv_ref-normTinv)/normTinv_ref;
 
-printf('3: Relerr %e\n', relerr);
+fprintf('3: Relerr %e\n', relerr);

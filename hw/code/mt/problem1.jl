@@ -8,7 +8,8 @@ function fast_mult(Z, x)
   # TODO: Replace this slow reference implementation
   n = length(x)
   A = Matrix{Float64}(I, n, n) + Z*Z'
-  return A*x
+  # return A*x
+  return x + Z*(Z'*x)
 
 end
 
@@ -19,9 +20,10 @@ function fast_cond(U, S, V)
 
   # TODO: Replace this slow reference implementation
   n = size(U,1)
-  Z = U*diagm(S)*V'
-  A = Matrix{Float64}(I, n, n) + Z*Z'
-  return cond(A)
+  # Z = U*diagm(S)*V'
+  # A = Matrix{Float64}(I, n, n) + Z*Z'
+  # return cond(A)
+  return (1+S[1]^2)
 
 end
 
@@ -30,9 +32,9 @@ end
 function fast_solve(Q, R, b)
 
   n = length(b)
-  Z = Q*R
-  A = Matrix{Float64}(I, n, n) + Z*Z'
-  return A\b
+  k = size(R,1)
+  # return A\b
+  return b-Q*R*((Matrix{Float64}(I, k, k)+R'*R)\(R'*(Q'*b)))
 
 end
 

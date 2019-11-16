@@ -5,7 +5,8 @@ using LinearAlgebra
 #
 function deriv_mnorm(x, M, dx, dM)
   # Compute derivative of squared M-norm of x
-  return dnormx
+  dnormx = dx'*M*x+x'*dM*x+x'*M*dx
+  return dnormx[1]
 end
 
 
@@ -13,6 +14,10 @@ end
 #
 function deriv_solve(Q, R, x, b, dZ, db)
   # Compute the derivative of the solution to the system
+  k = size(R,1)
+  # Z = Q*R
+  db1 = db-dZ*(R'*(Q'*x))-Q*R*(dZ'*x) # fix! julia QRCompact strange
+  dx =db1-Q*R*((Matrix{Float64}(I, k, k)+R'*R)\(R'*(Q'*db1)))
   return dx
 end
 
@@ -34,7 +39,7 @@ dx = rand(Float64, 10, 1)
 dM = rand(Float64, 10, 10)
 dM = (dM + dM')/2;
 
-h = 1e-6
+h = 1e-9
 normx_p = dot(x+h*dx, (M+h*dM)*(x+h*dx))
 normx_m = dot(x-h*dx, (M-h*dM)*(x-h*dx))
 dnormx_fd = (normx_p - normx_m)/(2*h)
