@@ -216,14 +216,18 @@
 -
   date: 2019-11-18
   info: Approximation from subspaces
+  notes: 2019-11-18.pdf
   hw:
     - info: HW 9 (due 11/25)
+      file: hw9.pdf
 -
   date: 2019-11-20
+  notes: 2019-11-20.pdf
   info: Krylov subspaces
 -
   date: 2019-11-22
-  info: Lanczos, Arnoldi, and connections
+  notes: 2019-11-22.pdf
+  info: Lanczos and Arnoldi
 #
 # ==================
 # Week 13
