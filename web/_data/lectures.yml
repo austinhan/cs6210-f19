@@ -216,21 +216,26 @@
 -
   date: 2019-11-18
   info: Approximation from subspaces
+  notes: 2019-11-18.pdf
   hw:
     - info: HW 9 (due 11/25)
+      file: hw9.pdf
 -
   date: 2019-11-20
+  notes: 2019-11-20.pdf
   info: Krylov subspaces
 -
   date: 2019-11-22
-  info: Lanczos, Arnoldi, and connections
+  notes: 2019-11-22.pdf
+  info: Lanczos and Arnoldi
 #
 # ==================
 # Week 13
 #
 -
   date: 2019-11-25
-  info: Lanczos, Arnoldi, and connections
+  info: Conjugate gradients
+  notes: 2019-11-25.pdf
 -
   date: 2019-11-27
   break: Thanksgiving break
@@ -243,15 +248,21 @@
 #
 -
   date: 2019-12-02
-  info: Conjugate gradients
+  break: Snow day
   hw:
     - info: HW 10 (due 12/9)
+      file: hw10.pdf
 -
   date: 2019-12-04
   info: Other Krylov subspace methods
+  notes: 2019-12-04.pdf
 -
   date: 2019-12-06
   info: Krylov subspace methods for eigenproblems
+  notes: 2019-12-06.pdf
+  hw:
+   - info: Final (due 12/18)
+     file: final.pdf
 #
 # ==================
 # Week 15
@@ -259,5 +270,4 @@
 -
   date: 2019-12-09
   info: Review
-  hw: 
-    - info: Final exam out
+  notes: 2019-12-09.pdf

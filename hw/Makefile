@@ -8,7 +8,10 @@ HW=pdf/hw1.pdf \
    pdf/mt.pdf \
    pdf/hw6.pdf \
    pdf/hw7.pdf \
-   pdf/hw8.pdf 
+   pdf/hw8.pdf \
+   pdf/hw9.pdf \
+   pdf/hw10.pdf \
+   pdf/final.pdf
 
 .PHONY: all copy
 all: $(HW)
