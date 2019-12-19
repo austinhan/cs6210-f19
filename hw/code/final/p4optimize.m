@@ -15,12 +15,11 @@ else
     k = size(V,2); % dim of null space
     a = V'*A*V;
     b = V'*A*xbar;
-    c = V'*M*xbar;
     d = 1/(1-xbar'*M*xbar);
-    mu = polyeig(a^2+1/d*(2*b*c'*a-b*b'),-2*a+1/d*(-3*b*c'-2*c*c'*a+c*b'),eye(k)+1/d*(3*c*c'));
+    mu = polyeig(a^2-d*b*b',-2*a,eye(k));
     mu = sort(real(mu(imag(mu)==0)));
     lambda = mu(1);
-    y = -(V'*A*V-lambda*eye(k))\(V'*(A-lambda*M)*xbar)*(1-xbar'*M*xbar);
+    y = -(V'*A*V-lambda*eye(k))\(V'*A*xbar);
     x = xbar + V*y;
 end
 
